@@ -1,0 +1,404 @@
+/* ============================================================
+   云观气象 · 新中式水墨主题
+   设计令牌取自 Stitch 设计稿（宣纸底、墨绿主色、赭石点缀）
+   ============================================================ */
+
+:root {
+  /* 色板 */
+  --ink-bg: #fdfae7;              /* 宣纸底 */
+  --ink-bg-low: #f7f4e1;          /* 侧栏/低层容器 */
+  --ink-bg-high: #ece9d6;
+  --ink-bg-highest: #e6e3d0;
+  --ink-surface: #fdfae7;
+  --ink-surface-white: #ffffff;
+  --ink-primary: #143026;         /* 墨绿（主色） */
+  --ink-primary-container: #2b463c;
+  --ink-secondary: #944a27;       /* 赭石（强调/预警） */
+  --ink-secondary-container: #fd9e74;
+  --ink-on-secondary-container: #763312;
+  --ink-tertiary: #002e49;        /* 深靛（湿度/水） */
+  --ink-tertiary-container: #1f4461;
+  --ink-text: #1c1c11;
+  --ink-text-variant: #424845;
+  --ink-outline: #727975;
+  --ink-outline-variant: #c1c8c3;
+  --ink-error: #ba1a1a;
+
+  /* 字体 */
+  --font-serif: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-sans: 'Work Sans', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-din: 'DIN Alternate', 'Work Sans', sans-serif;
+
+  /* 阴影与描边 */
+  --ink-border: 1px solid rgba(20, 48, 38, 0.15);
+  --paper-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  /* Element Plus 主色对齐水墨主题（ElMessage / MessageBox 等） */
+  --el-color-primary: #2b463c;
+  --el-color-primary-light-3: #4a6357;
+  --el-color-primary-light-5: #6f8377;
+  --el-color-primary-light-7: #a3b0a7;
+  --el-color-primary-light-8: #bcc6bd;
+  --el-color-primary-light-9: #d8ded9;
+  --el-color-primary-dark-2: #22372f;
+  --el-color-error: #ba1a1a;
+  --el-border-radius-base: 4px;
+  --el-font-family: 'Work Sans', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ink-bg);
+  /* 宣纸颗粒纹理 */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  color: var(--ink-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Material Symbols ---------- */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ---------- 排版 ---------- */
+.t-display {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.t-headline {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--ink-primary);
+}
+
+.t-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-primary);
+}
+
+.t-label {
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: var(--ink-text-variant);
+}
+
+.t-num {
+  font-family: var(--font-din);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 卡片与面板 ---------- */
+.scroll-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  box-shadow: var(--paper-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.ink-border {
+  border: var(--ink-border);
+}
+
+.brush-stroke {
+  height: 4px;
+  background: linear-gradient(90deg, var(--ink-primary), transparent);
+  border-radius: 4px;
+}
+
+/* ---------- 表单（下划线输入） ---------- */
+.field {
+  .field-label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    color: var(--ink-text-variant);
+    margin-bottom: 8px;
+  }
+
+  .field-control {
+    position: relative;
+
+    select,
+    input {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--ink-outline-variant);
+      padding: 8px 28px 8px 2px;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      color: var(--ink-text);
+      appearance: none;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.25s;
+
+      &:focus {
+        border-bottom-color: var(--ink-primary);
+      }
+    }
+
+    input {
+      cursor: text;
+    }
+
+    .field-arrow {
+      position: absolute;
+      right: 2px;
+      top: 8px;
+      font-size: 22px;
+      color: var(--ink-outline);
+      pointer-events: none;
+    }
+  }
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 22px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: var(--ink-primary-container);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+  &:hover:not(:disabled) {
+    background: var(--ink-primary);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--ink-outline);
+  color: var(--ink-text);
+
+  &:hover:not(:disabled) {
+    background: var(--ink-bg-low);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--ink-outline-variant);
+  color: var(--ink-text-variant);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+
+  &:hover:not(:disabled) {
+    background: var(--ink-bg-high);
+  }
+}
+
+.btn-ghost.is-active {
+  border-color: var(--ink-primary);
+  color: var(--ink-primary);
+  background: rgba(20, 48, 38, 0.05);
+}
+
+/* ---------- 徽章 ---------- */
+.trend-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid transparent;
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  &.up {
+    background: rgba(186, 26, 26, 0.08);
+    color: var(--ink-error);
+    border-color: rgba(186, 26, 26, 0.2);
+  }
+  &.down {
+    background: rgba(31, 68, 97, 0.08);
+    color: var(--ink-tertiary-container);
+    border-color: rgba(31, 68, 97, 0.2);
+  }
+  &.flat {
+    background: rgba(114, 121, 117, 0.08);
+    color: var(--ink-text-variant);
+    border-color: var(--ink-outline-variant);
+  }
+}
+
+/* ---------- 通用文本工具 ---------- */
+.text-variant {
+  color: var(--ink-text-variant);
+}
+
+.text-outline {
+  color: var(--ink-outline);
+}
+
+/* ---------- 滚动条 ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-outline-variant);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-outline);
+}
+
+/* ---------- 深色水墨主题（夜航版，html.dark 激活） ---------- */
+html.dark {
+  --ink-bg: #0e1613;
+  --ink-bg-low: #12201a;
+  --ink-bg-high: #16281f;
+  --ink-bg-highest: #1b3026;
+  --ink-surface: #101b16;
+  --ink-surface-white: #0f1a15;
+  --ink-primary: #a8ccb6;
+  --ink-primary-container: #4a7a63;
+  --ink-secondary: #e8926a;
+  --ink-secondary-container: #a05a35;
+  --ink-on-secondary-container: #ffd0b0;
+  --ink-tertiary: #8ab6d8;
+  --ink-tertiary-container: #4a7ea3;
+  --ink-text: #e8e4d0;
+  --ink-text-variant: #b8b6a2;
+  --ink-outline: #8a948a;
+  --ink-outline-variant: #33413a;
+  --ink-error: #ff7a6b;
+  --el-color-primary: #4a7a63;
+  --el-color-primary-light-3: #5f8a74;
+  --el-color-primary-light-5: #7ba08c;
+  --el-color-primary-light-7: #9db6a6;
+  --el-color-primary-light-8: #b3c4b8;
+  --el-color-primary-light-9: #cbd6cc;
+  --el-color-primary-dark-2: #3d6653;
+  --el-bg-color: #101b16;
+  --el-bg-color-overlay: #14231c;
+  --el-text-color-primary: #e8e4d0;
+  --el-text-color-regular: #b8b6a2;
+  --el-border-color: #33413a;
+}
+
+html.dark body {
+  background-color: var(--ink-bg);
+}
+
+/* 组件内硬编码浅色的主题覆盖（!important 压过 scoped 特异性） */
+html.dark .top-nav {
+  background: rgba(14, 22, 19, 0.96) !important;
+  border-bottom-color: rgba(138, 148, 138, 0.2) !important;
+}
+html.dark .side-nav {
+  background: var(--ink-bg-low) !important;
+  border-right-color: rgba(138, 148, 138, 0.15) !important;
+}
+html.dark .side-user {
+  border-bottom-color: rgba(138, 148, 138, 0.15) !important;
+}
+html.dark .side-link:hover {
+  background: rgba(27, 48, 38, 0.7) !important;
+}
+html.dark .side-link.is-active {
+  background: rgba(232, 146, 106, 0.15) !important;
+}
+html.dark .side-status {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+html.dark .scroll-card {
+  background: rgba(18, 32, 26, 0.92) !important;
+}
+html.dark .ink-border {
+  border-color: rgba(159, 197, 176, 0.16) !important;
+}
+html.dark .app-main {
+  background-image: none !important;
+}
+html.dark .ink-table thead th {
+  background: #101b16 !important;
+}
+html.dark .brush-stroke {
+  background: linear-gradient(90deg, var(--ink-primary), transparent) !important;
+}
+html.dark .stat-cell {
+  background: rgba(27, 48, 38, 0.6) !important;
+}
+html.dark .dash-error {
+  background: rgba(14, 22, 19, 0.96) !important;
+}
+html.dark .seal-card {
+  background: rgba(18, 32, 26, 0.9) !important;
+}
+html.dark .el-dialog,
+html.dark .el-message-box {
+  background: #101b16;
+}
+html.dark .el-dialog__title,
+html.dark .el-message-box__title,
+html.dark .el-message-box__content {
+  color: var(--ink-text);
+}

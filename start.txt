@@ -1,0 +1,5 @@
+cd C:\Users\qcyn\Desktop\weather-project\weather-platform\weather-api
+D:\apache-maven-3.9.16\bin\mvn.cmd spring-boot:run
+
+cd C:\Users\qcyn\Desktop\weather-project\weather-demo
+npm run dev
